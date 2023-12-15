@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+message HermesMessage {
+  CommandMessage commandMessage = 1;
+  // ProtoSubscribeMessage subscribeMessage = 2;
+  // ProtoUnsubscribeMessage unsubscribeMessage = 3;
+}
+
+message CommandMessage {
+  bytes txid = 1;
+  bytes topic = 2;
+  Timestamp createdAt = 3;
+  bytes senderId = 4;
+  CommandType commandType = 5;
+  bytes requestTxid = 6;
+  StatusCode statusCode = 7;
+  bytes responseTopic = 8;
+  Timestamp expiry = 9;
+  bytes payload = 10;
+  FlatbuffersMessageOptions options = 11;
+  bytes messageId = 12;
+}
+
+message Timestamp {
+  int64 seconds = 1;
+  int32 nanos = 2;
+}
+
+message FlatbuffersMessageOptions {
+  uint32 responseSubscribed = 1;
+  uint32 qos = 2;
+  bytes token = 3;
+  bytes signature = 4;
+}
+
+enum StatusCode {
+  STATUS_CODE_OK = 0;
+  STATUS_CODE_INVALID_MESSAGE = 1;
+  STATUS_CODE_INVALID_TOKEN = 2;
+  STATUS_CODE_PUBLISH_FAILED = 3;
+  STATUS_CODE_PERMISSION_DENIED_NO_TOKEN = 4;
+  STATUS_CODE_PERMISSION_DENIED_EXPIRED_TOKEN = 5;
+  STATUS_CODE_PUBLISH_FAILED_NOT_CONNECTED = 6;
+  STATUS_CODE_SERVER_ACK = 1202;
+  STATUS_CODE_TOO_MANY_REQUESTS = 1429;
+  STATUS_CODE_CLIENT_ACK = 2202;
+  STATUS_CODE_INTERNAL_ERROR = 2500;
+  STATUS_CODE_APPLICATION_OK = 3200;
+  STATUS_CODE_APPLICATION_ACK = 3202;
+  STATUS_CODE_APPLICATION_ERROR = 3500;
+}
+
+enum CommandType {
+  COMMAND_TYPE_OK = 0;
+  COMMAND_TYPE_ERROR_RESPONSE = 1031;
+  COMMAND_TYPE_DEVICE_CONNECTED = 1044;
+  COMMAND_TYPE_DEVICE_DISCONNECTED = 1046;
+  COMMAND_TYPE_SIGNED_COMMAND = 1047;
+  COMMAND_TYPE_SIGNED_COMMAND_RESPONSE = 1048;
+  COMMAND_TYPE_SIGNED_COMMAND_ERROR = 1049;
+  COMMAND_TYPE_STREAMING_CONFIG = 1056;
+  COMMAND_TYPE_GET_VAULT = 1059;
+  COMMAND_TYPE_SAVE_VAULT = 1060;
+}
