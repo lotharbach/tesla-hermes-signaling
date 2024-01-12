@@ -15,7 +15,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/lotharbach/tesla-hermesclient/hermes"
+	"github.com/lotharbach/tesla-hermes-signaling/hermes"
 	log "github.com/sirupsen/logrus"
 	"github.com/teslamotors/vehicle-command/pkg/protocol"
 	"github.com/teslamotors/vehicle-command/pkg/vehicle"

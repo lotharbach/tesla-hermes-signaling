@@ -1,4 +1,4 @@
-module github.com/lotharbach/tesla-hermesclient
+module github.com/lotharbach/tesla-hermes-signaling
 
 go 1.21.3
 

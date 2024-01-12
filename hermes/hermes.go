@@ -9,7 +9,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
-	"github.com/lotharbach/tesla-hermesclient/protos"
+	"github.com/lotharbach/tesla-hermes-signaling/protos"
 	log "github.com/sirupsen/logrus"
 	"github.com/teslamotors/vehicle-command/pkg/connector"
 	"github.com/teslamotors/vehicle-command/pkg/protocol/protobuf/universalmessage"
